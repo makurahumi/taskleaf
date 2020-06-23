@@ -1,3 +1,21 @@
 h1 タスク一覧
 
+/ 新規登録画面へ移動
 = link_to "新規登録", new_task_path, class: 'btn btn-primary'
+
+/ タスク一覧表示部分
+.mb-3
+table.table.table-hover
+  thead.thead-default
+
+    / タスク一覧見出し部分
+    tr
+      th = Task.human_attribute_name(:name)
+      th = Task.human_attribute_name(:created_at)
+    
+    / タスク一覧内容部分
+    tbody
+      - @tasks.each do |task|
+        tr
+          td = task.name
+          td = task.created_at

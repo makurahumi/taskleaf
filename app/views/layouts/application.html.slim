@@ -7,10 +7,15 @@ html
     = csp_meta_tag
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+
   body
+    / 全ての画面にアプリ名を表示する
     .app-title.navbar.navbar-expand-md.navbar-light.bg-light
       .navbar-brand Taskleaf
+    
+    / フラッシュメッセージ用コンテナ
     .container
       - if flash.notice.present?
         .alert.alert-success = flash.notice
+      
       = yield
