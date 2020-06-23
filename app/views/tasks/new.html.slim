@@ -1,8 +1,10 @@
 h1 タスクの新規登録
 
+/ トップページへの移動
 .nav.justify-cintent-end
   = link_to '一覧', tasks_path, class: 'nav-link'
 
+/ タスク新規登録入力部分
 = form_with model: @task, local: true do |f|
   .form-group
     = f.label :name
