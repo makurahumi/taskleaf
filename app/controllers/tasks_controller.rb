@@ -1,18 +1,18 @@
 class TasksController < ApplicationController
   def index
-    @tasks = Task.all
+    @tasks = Task.all #タスク情報全てをindexへ表示
   end
 
   def show
-    @task = Task.find(params[:id])
+    @task = Task.find(params[:id]) #各タスクに応じた情報をshowへ表示
   end
 
   def new
-    @task = Task.new
+    @task = Task.new #タスク情報を入力するnewを表示
   end
 
   def create
-    task = Task.new(task_params)
+    task = Task.new(task_params) #newで入力したタスクをテーブルへ保存する
     task.save!
     redirect_to tasks_url, notice: "タスク「#{task.name}」を登録しました。" #登録後トップページへリダイレクト
   end
