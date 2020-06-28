@@ -18,11 +18,18 @@ class TasksController < ApplicationController
   end
 
   def edit
+    @task = Task.find(params[:id]) #各タスクに応じた情報をeditへ表示
+  end
+
+  def update
+    task = Task.find(params[:id]) #editで編集した内容をテーブルへ保存する
+    task.update!(task_params)
+    redirect_to task_url, notice: "タスク「#{task.name}」を更新しました。" #編集完了後トップページへリダイレクト
   end
 
   private
   
-  def task_params
+  def task_params #タスク内容のストロングパラメータ
     params.require(:task).permit(:name, :description)
   end
 end
