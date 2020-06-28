@@ -4,13 +4,5 @@ h1 タスクの編集
 .nav.justify-content-end
   = link_to '一覧', tasks_path, class: 'nav-link'
 
-/ タスク内容編集入力部分
-= form_with model: @task, local: true do |f|
-  .form-group
-    = f.label :name
-    = f.text_field :name, class: 'form-control', id: 'task_name'
-  .form-group
-    = f.label :description
-    = f.text_area :description, rows: 5, class: 'form-control', id: 'task_description'
-
-  = f.submit nil, class: 'btn btn-primary'
+/ 部分テンプレート、_form.html.slimを呼び出し
+= render partial: 'form', loaclas: { task: @task }
