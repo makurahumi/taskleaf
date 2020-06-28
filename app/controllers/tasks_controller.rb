@@ -24,7 +24,7 @@ class TasksController < ApplicationController
   def update
     task = Task.find(params[:id]) #editで編集した内容をテーブルへ保存する
     task.update!(task_params)
-    redirect_to task_url, notice: "タスク「#{task.name}」を更新しました。" #編集完了後トップページへリダイレクト
+    redirect_to tasks_url, notice: "タスク「#{task.name}」を更新しました。" #編集完了後トップページへリダイレクト
   end
 
   private
