@@ -12,9 +12,12 @@ class TasksController < ApplicationController
   end
 
   def create
-    task = Task.new(task_params) #newで入力したタスクをテーブルへ保存する
-    task.save!
-    redirect_to tasks_url, notice: "タスク「#{task.name}」を登録しました。" #登録後トップページへリダイレクト
+    @task = Task.new(task_params) #newで入力したタスクをテーブルへ保存する
+    if @task.save
+      redirect_to @task, notice: "タスク「#{@task.name}」を登録しました。" #登録後トップページへリダイレクト
+    else
+      render :new #保存失敗時にnewへ移動する。
+    end
   end
 
   def edit
